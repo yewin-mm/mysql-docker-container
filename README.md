@@ -44,8 +44,9 @@
       - [2. Create Volume](#create-volume)
       - [3. Run MySQL container](#run-container)
       - [4. Check MySQL Container](#check-container)
-      - [5. Connect DB Container From Other Container](#connect-from-other-container)
-      - [6. Conclusion](#conclusion)
+      - [5. Check Network driver and Volume](#check-network-volume)
+      - [6. Connect DB Container From Other Containers](#connect-from-other-container)
+      - [7. Conclusion](#conclusion)
 - [Contact Me](#contact)
 - [Contributing](#Contributing)
 
@@ -60,11 +61,12 @@ If you install MySQL db with installer, your db will run in background the while
 and it will impact your machine RAM as running background even if you don't want to use it. <br>
 So, Containerize MySQL db is the better approach than manual installation. <br>
 You can do containerize other db like PostgreSQL, etc as you want. All you need is your want db image is existed in docker hub. <br>
-You can do step by step as I showed in [Instruction](#instruction) section.
+You can do step by step as I showed in [Instruction](#instruction) section. <br>
+Example project to connect this Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 <a name="built-with"></a>
 ### 🪓 Built With
-This project is built with]
+This project is built with
 * [Docker](https://www.docker.com/products/docker-desktop/)
 
 
@@ -79,7 +81,8 @@ You can do step by step as I showed in [Instruction](#instruction) section.
 <a name="before-you-begin"></a>
 ### 🔔 Before you begin
 Before learn and see this project, <br>
-You should already know some docker command and you can learn some commands in the instructions section of this [spring-boot-docker-sample project](https://github.com/yewin-mm/spring-boot-docker-sample).
+You should already know some docker command and you can learn some commands in the instructions section of this [spring-boot-docker-sample project](https://github.com/yewin-mm/spring-boot-docker-sample). <br>
+Example project to connect this Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 
 <a name="clone-project"></a>
@@ -194,7 +197,8 @@ docker exec -it {mysql_container_id} /bin/bash
 mysql -uroot -proot
 ```
 * here, -u is for username and -p is for password.
-* here, if you can't go MySQL console by authentication root.
+* here, if you get login into MySQL Constol with above, you can go directly to [Successfully Login](#successfully-login) section.
+* but, if you can't go MySQL console by authentication root.
 * type `exit` to leave container.
 <a name="clear"></a>
 ###### Clear
@@ -215,6 +219,8 @@ docker run --name=yw_mysql -p3306:3306 --network mysql -v mysql-volume:/var/lib/
 * After you get inside container, you can test login into mysql console by typing `mysql -uroot -proot` again or type `mysql -uuser -proot`.
 * If you get inside Mysql Console with root user it's ok and do below process, but you can only get inside only with user, you need to grant access to this user as that user doesn't has any privileges for now. for more details, find in google.
 
+<a name="successfully-login"></a>
+###### Successfully Login into MySQL Console
 * After you get inside MySQL console successfully with root user, please type below command to check host is allow for public or not.
 * Type in MySQl console (inside MySQL container, inside MySQL console).
 ```sh
@@ -233,8 +239,10 @@ SELECT host, user FROM mysql.user;
 
 
 * Please note that, `%` under `host` tab is bind with root user should be seen. It's mean allow any host with root user.
-* If you don't see `%` under host tab,
-	* You need to grant access your user eg. root user.  to allow any host to connect db.
+* If you see that `%` with `host` like above table, 
+* That means it's ok and you can go directly to this [check network and volume](check-network-volume) section by skip below steps.
+* But if you don't see `%` under host tab,
+	* You need to to allow any host to connect db to your user eg. root user. 
 	* Type
 
   ```sh
@@ -242,8 +250,12 @@ SELECT host, user FROM mysql.user;
   ```
 	* and type `FLUSH PRIVILEGES;` to reload all changes.
 	* and type `SELECT host, user FROM mysql.user;` again and check host is `%` for root user or not.
-	* If you still don't see `%` in host or your above update query is not ok, Create other users like below and update to that user for host to `%`.
+	* If you see that `%` host with `root` user, you can go directly to this [check network and volume](check-network-volume) section by skip below steps.
+	* But if you still don't see `%` in host or your above update query is not ok, Create other users like below and update to that user for host to `%`.
 
+
+<a name="create-user"></a>
+###### create other user
 * You can create other users in MySQL console to connect db by typing
 ```sh
 CREATE USER 'test'@'%' IDENTIFIED BY 'testpassword';
@@ -285,38 +297,41 @@ FLUSH PRIVILEGES;
 	* If not still ok with root user, you can test by creating other user like above steps.
 
 * If everything was fine, type `exit` to leave MySQL console and type `exit` again to leave container.
-* And you can test from your application by adding host to `localhost:3306` or `127.0.0.1:3306` in datasource url like `jdbc:mysql://localhost:3306/your_database_name`
-* And username to root or your given name and password to root or your given password.
-* You can also connect from your GUI tools by adding above credentials (localhost, root, root, etc).
-* Please note that you can't use that `localhost` or `127.0.0.1` to connect MySQL container from your application which is running as container.
 
 
-* Check Network driver and Volume
+<a name="check-network-volume"></a>
+#### 5. Check Network driver and Volume
+* If you are in MySQL console or MySQL container, type `exit` to leave MySQL console and type `exit` again to leave container.
+* You can check Network driver and Volume as below command
 ```sh
 docker inspect {mysql_container_id}
 ```
 
 * here, you may see a lot of setting for your container,
-* scroll down and you can see `Networks` under `NetworkSettings` in there and check `mysql` is under `Networks` that we already create network in first step.
+* scroll down and you can see `Networks` tab under `NetworkSettings` in there and check `mysql` is under `Networks` that we already create network in first step.
 * Which mean our container is going under our custom define network.
 * scroll up and you can see `Binds": [
   "mysql-volume:/var/lib/mysql"
   ]` under `HostConfig` tab and you can see `mysql-volume` that we already create volume in second step.
 * Which mean our container is attach with our custom volume.
 
-* If not see `mysql` network or `mysql-volume`, please do clear all like above [clear](#clear) secion and run mysql container again and please make sure in run command for `--network mysql` and `-v mysql-volume:/var/lib/mysql` are same with your created network name and volume name.
+* If not see `mysql` network or `mysql-volume`, please do clear all like above [clear](#clear) secion 
+* And run mysql container again and please make sure in run command for `--network mysql` and `-v mysql-volume:/var/lib/mysql` are same with your created network name and volume name.
 
 
 <a name="connect-from-other-container"></a>
-#### 5. Connect DB Container From Other Container
-* If you want to run your application as container, you can't call (connect) to MySQL db which running as container by adding (localhost or 127.0.0.1) in your application.properties file.
-* You can call Containerized MySQL db from outside (your host, or other) application (app is not run as container) by adding (localhost or 127.0.0.1) in your application.properties file
-* But you can't call to Containerized MySQL db with that (localhost, 127.0.0.1) in your application.properties file when your application was running as a container.
+#### 6. Connect DB Container From Other Containers
+* If everything was fine for running MySQL db as container.
+* Add database username to `root` or `your given name` and password to `root` or `your given password` in your application properties file.
+* If you don't want to use `root` user, you can create user as per this [create other user](#create-user) section.
+* You can connect Containerized MySQL db from outside application (your host, like running in IDE or run as jar) by adding `localhost` or `127.0.0.1` in database datasource url connection string in your application properties file.
+* But you can't connect to Containerized MySQL db with that `localhost` or `127.0.0.1` when your application was running as a container.
 * There are two ways to call containerized MySQL db from containerized application which to add in your application properties file in your db connection string
 	* Using container name
 		* You need to add mysql container name to connect between container.
 		* Add below db url connection string in your application properties file.
 		* eg. `spring.datasource.url=jdbc:mysql://yw_mysql:3306/{your_database_name}`
+		* Here, I used `yw_mysql` because I set name for container as `yw_mysql` in docker run command.
 	* Using container ipaddress
 		* You can find ipaddress to connect between containers
 		* Type in cmd or terminal
@@ -329,9 +344,10 @@ docker inspect {mysql_container_id}
 		* eg. `spring.datasource.url=jdbc:mysql://172.20.0.2:3306/{your_database_name}`
 
 * If you don't want to run your application as container, you can use `localhost` or `127.0.0.1` which I mentioned in above.
+* Example project to connect Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 <a name="conclusion"></a>
-#### 6. Conclusion
+#### 7. Conclusion
 * Finally, you could run MySQL database as container.
 * If you don't want to do things which related with database, 
 * You can manage with start or stop your container by `docker stop {mysql_container_id}`, `docker start {mysql_container_id}`.
@@ -339,6 +355,7 @@ docker inspect {mysql_container_id}
 * So, If you want to use MySQL, you can `start`. No need to re-run the whole process, it's just `docker start {mysql_container_id}` to get that stopped container id, you need to type `docker ps -a`.
 * If you don't want MySQL as for a while, you can `stop`. And if you want back, you can `start` again like above `docker ps -a` and `docker start {mysql container_id}`.
 * So, it will reduce RAM space on your laptop to get better performance than you install MySQL database with installer because installer will run application in background the whole time.
+* Example project to connect Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 ***Have Fun and Enjoy in Learning Code***
 
