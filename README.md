@@ -28,7 +28,7 @@
 
 
 # mysql-docker-container
-* This is to run MySQL as docker container.
+* This is to run MySQL as docker container. <br> You can containerized MySQL db as my step by step guide which is on below [Instruction](#instruction) section.
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -332,7 +332,10 @@ docker inspect {mysql_container_id}
 #### 6. Conclusion
 * Finally, you could run MySQL database as container.
 * If you don't want to do things which related with database, 
-* you can manage with start or stop your container by `docker stop {container_id}`, `docker start {container_id}`.
+* You can manage with start or stop your container by `docker stop {mysql_container_id}`, `docker start {mysql_container_id}`.
+* You can get your stopped MySQL container id by `docker ps -a` because you can't get container id by `docker ps`, if it is stopped.
+* So, If you want to use MySQL, you can `start`. No need to re-run the whole process, it's just `docker start {mysql_container_id}` to get that stopped container id, you need to type `docker ps -a`.
+* If you don't want MySQL as for a while, you can `stop`. And if you want back, you can `start` again like above `docker ps -a` and `docker start {mysql container_id}`.
 * So, it will reduce RAM space on your laptop to get better performance than you install MySQL database with installer because installer will run application in background the whole time.
 
 ***Have Fun and Enjoy in Learning Code***
