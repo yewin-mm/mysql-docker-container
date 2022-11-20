@@ -29,7 +29,7 @@
 
 # mysql-docker-container
 * This is to run MySQL as docker container. 
-* You can containerized MySQL db as my step by step guide which is on below [Instruction](#instruction) section.
+* You can containerized MySQL db as my step by step guide as below.
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
