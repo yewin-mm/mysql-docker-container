@@ -28,7 +28,8 @@
 
 
 # mysql-docker-container
-* This is to run MySQL as docker container. <br> You can containerized MySQL db as my step by step guide which is on below [Instruction](#instruction) section.
+* This is to run MySQL as docker container. 
+* You can containerized MySQL db as my step by step guide which is on below [Instruction](#instruction) section.
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -58,7 +59,7 @@ If you don't want to do things with db, you can stop container. <br>
 If you install MySQL db with installer, your db will run in background the while time, <br> 
 and it will impact your machine RAM as running background even if you don't want to use it. <br>
 So, Containerize MySQL db is the better approach than manual installation. <br>
-You can do containerize other db like PostgreSQL, etc as you want. All you need is your want db image is existed in docker hub.
+You can do containerize other db like PostgreSQL, etc as you want. All you need is your want db image is existed in docker hub. <br>
 You can do step by step as I showed in [Instruction](#instruction) section.
 
 <a name="built-with"></a>
@@ -104,8 +105,9 @@ Prerequisites can be found in here [Spring Boot Application Instruction](https:/
   *There are 5 network drivers, Bridge, Host, Overlay, MacVLAN, None.
 * `Bridge` is default network and all containers linked this network if not specify exactly and it have an internal IP address which they (containers) communicate with each other easily.
 * `Host` is public network which use host ip address and multiple containers can't run on this host network. You can go search for more about network types in google.
-  Here, I will go my MySQL db with my custom ***Bridge*** network name called `mysql` which will go under `Bridge` network driver.
-  Type in your cmd or terminal
+* Here, I will go my MySQL db with my custom ***Bridge*** network name called `mysql` which will go under `Bridge` network driver.
+* Open `Docker Desktop`.
+* Type in your cmd or terminal below commands.
 
 ```sh
 docker network create mysql
@@ -157,7 +159,7 @@ docker run --name=yw_mysql -p3306:3306 --network mysql -v mysql-volume:/var/lib/
 * -v or --volume is to connect our created volume which is in above step and give directory of the volumn which volume directory is inside docker as I mentioned in above docker will control that volume. Path is inside container and you can give as your want.
 * -e option is ENVIRONMENT variable which is to define, root password, user, password, database, etc. (if you create user with MYSQL_USER environment, you need to give permission)
 * --restart need to add policy, there are 4 policy, `no` (default, if no set), `on-failure`, `always`, `unless-stopped`.
-	* I used `unless-stopped` policy because I don't want auto restart my MySQL container on both manually stopped condition and docker deamon stopped conditions. You can use `always` policy if you want auto restart after docker application was started. for more details about restart policy, you can check in `[Docker restart policy](https://docs.docker.com/config/containers/start-containers-automatically/)
+	* I used `unless-stopped` policy because I don't want auto restart my MySQL container on both manually stopped condition and docker deamon stopped conditions. You can use `always` policy if you want auto restart after docker application was started. for more details about restart policy, you can check in [Docker restart policy](https://docs.docker.com/config/containers/start-containers-automatically/).
 * -d is for detach mode (run in background and hiding logs), you can look logs for your container by typing `docker logs -f -n 100 {container_id}`
 * latest is for MySQL latest version and you can add other version as you want like mysql:5.7, etc. (current is 8.0.31)
 
