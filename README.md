@@ -240,7 +240,7 @@ SELECT host, user FROM mysql.user;
 
 * Please note that, `%` under `host` tab is bind with root user should be seen. It's mean allow any host with root user.
 * If you see that `%` with `host` like above table, 
-* That means it's ok and you can go directly to this [check network and volume](check-network-volume) section by skip below steps.
+* That means it's ok and you can go directly to this [check network and volume](#check-network-volume) section by skip below steps.
 * But if you don't see `%` under host tab,
 	* You need to to allow any host to connect db to your user eg. root user. 
 	* Type
@@ -250,7 +250,7 @@ SELECT host, user FROM mysql.user;
   ```
 	* and type `FLUSH PRIVILEGES;` to reload all changes.
 	* and type `SELECT host, user FROM mysql.user;` again and check host is `%` for root user or not.
-	* If you see that `%` host with `root` user, you can go directly to this [check network and volume](check-network-volume) section by skip below steps.
+	* If you see that `%` host with `root` user, you can go directly to this [check network and volume](#check-network-volume) section by skip below steps.
 	* But if you still don't see `%` in host or your above update query is not ok, Create other users like below and update to that user for host to `%`.
 
 
