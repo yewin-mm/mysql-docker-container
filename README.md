@@ -333,6 +333,7 @@ docker inspect {mysql_container_id}
 		* eg. `spring.datasource.url=jdbc:mysql://yw_mysql:3306/{your_database_name}`
 		* Here, I used `yw_mysql` because I set name for container as `yw_mysql` in docker run command.
 	* Using container ipaddress
+		* I suggest to use above container name instead of using this below container ipaddress.
 		* You can find ipaddress to connect between containers
 		* Type in cmd or terminal
 
@@ -343,6 +344,7 @@ docker inspect {mysql_container_id}
 		* Add below db url connection string in your application properties file.
 		* eg. `spring.datasource.url=jdbc:mysql://172.20.0.2:3306/{your_database_name}`
 
+* I recommand to use container name instead of using ipaddress while connection to containerized db from containerized application.
 * If you don't want to run your application as container, you can use `localhost` or `127.0.0.1` which I mentioned in above.
 * Example project to connect Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
