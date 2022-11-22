@@ -27,6 +27,11 @@
 [linkedin-url]: https://www.linkedin.com/in/ye-win-1a33a292/
 
 
+<h1 align="center">
+  Overview
+  <img src="https://github.com/yewin-mm/mysql-docker-container/blob/master/github/template/images/overview/mysql_container.png" /><br/>
+</h1>
+
 # mysql-docker-container
 * This is to run MySQL as docker container. 
 * You can containerized MySQL db as my step by step guide as below.
