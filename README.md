@@ -163,7 +163,7 @@ docker run --name=yw_mysql -p3306:3306 --network mysql -v mysql-volume:/var/lib/
 
 * here, --name is your continer name and you can give as you want.
 * -p mapping container port
-* --network is to run our app under our custom define network which is in first step.
+* --network is to run our app under our custom define network which is in first step. You can also use --net and it's same.
 * -v or --volume is to connect our created volume which is in above step and give directory of the volumn which volume directory is inside docker as I mentioned in above docker will control that volume. Path is inside container and you can give as your want.
 * -e option is ENVIRONMENT variable which is to define, root password, user, password, database, etc. (if you create user with MYSQL_USER environment, you need to give permission)
 * --restart need to add policy, there are 4 policy, `no` (default, if no set), `on-failure`, `always`, `unless-stopped`.
