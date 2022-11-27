@@ -327,7 +327,7 @@ docker inspect {mysql_container_id}
   ]` under `HostConfig` tab and you can see `mysql-volume` that we already create volume in second step.
 * Which mean our container is attach with our custom volume.
 
-* If not see `mysql` network or `mysql-volume`, please do clear all like above [clear](#clear) secion 
+* If not see `mysql` network or `mysql-volume`, please do clear all like above [clear](#clear) section. 
 * And run mysql container again and please make sure in run command for `--network mysql` and `-v mysql-volume:/var/lib/mysql` are same with your created network name and volume name.
 
 
