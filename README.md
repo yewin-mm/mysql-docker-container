@@ -115,7 +115,7 @@ Prerequisites can be found in here [Spring Boot Application Instruction](https:/
 <a name="create-network"></a>
 #### 1. Create network
 
-* One of the reasons for Docker Network is Docker containers and services are so powerful is that you can connect them together, or connect them to non-Docker workloads. (ref - docker official side)
+* One of the reasons of using Docker Network is Docker containers and services are so powerful is that you can connect them together, or connect them to non-Docker workloads. (ref - docker official side)
 * Whatever, you don't use custom network or use network is ok. But here, I will use my custom network.
   *There are 5 network drivers, Bridge, Host, Overlay, MacVLAN, None.
 * `Bridge` is default network and all containers linked this network if not specify exactly and it have an internal IP address which they (containers) communicate with each other easily.
