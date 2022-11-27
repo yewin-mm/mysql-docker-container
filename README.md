@@ -110,6 +110,7 @@ Prerequisites can be found in here [Spring Boot Application Instruction](https:/
 
 <a name="instruction"></a>
 ### 📝 Instruction
+* First of all, please `uninstall` your MySQL Database if you already installed MySQL db with installer.
 
 <a name="create-network"></a>
 #### 1. Create network
