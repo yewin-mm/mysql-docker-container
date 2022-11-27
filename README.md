@@ -306,7 +306,7 @@ FLUSH PRIVILEGES;
   ```
 	* Here, I added root host to `%`.
 	* But you need to do testing above steps for sure like testing host by `SELECT` query.
-	* If not still ok with root user, you can test by creating other user like above steps.
+	* If not still ok with root user, you can test by [creating other user](#create-user) like above steps.
 
 * If everything was fine, type `exit` to leave MySQL console and type `exit` again to leave container.
 
