@@ -372,6 +372,9 @@ docker inspect {mysql_container_id}
 * So, If you want to use MySQL, you can `start`. No need to re-run the whole process, it's just `docker start {mysql_container_id}` to get that stopped container id, you need to type `docker ps -a`.
 * If you don't want MySQL as for a while, you can `stop`. And if you want back, you can `start` again like above `docker ps -a` and `docker start {mysql container_id}`.
 * So, it will reduce RAM space on your laptop to get better performance than you install MySQL database with installer because installer will run application in background the whole time.
+* Please note that if you run your db as container, your db will run the whole time in background. <br>
+So, you should stop when you are not use that db. This is one of the good approach of using containers that we can manage our containers as we want.
+* Database won't run when Docker was close. But if you open docker, it will automatically run as background unless you don't stop container manual with Docker stop keyword.
 * Example project to connect Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 ***Have Fun and Enjoy in Learning Code***
