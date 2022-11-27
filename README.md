@@ -159,7 +159,7 @@ docker network create mysql
 #### 3. Run MySQL container
 * Normally, if you want to run container, you need to have docker images first.
 * You can get images by pulling images by `docker pull {image_name} from docker hub if exist or creating (build) your own images if not exist in docker hub.
-* In here, MySQl images is alredy in Docker Hub cloud and if exist in docker hub, you don't need docker pull command. It will pull automatically when docker container run.
+* In here, MySQl images is already in Docker Hub cloud and if exist in docker hub, you don't need docker pull command. It will pull automatically when docker container run.
 * So, you can skip pulling MySQL image from Docker hub because if docker can't find existing local images, it will auto pull from docker hub.
 * But if you want to go step by step, you can type `docker pull mysql:latest` and after pulling was finished, you can type below docker run command.
 * You can just directly type docker run command rather than `docker pull {image name}` command like below.
