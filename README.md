@@ -168,15 +168,15 @@ docker network create mysql
 docker run --name=yw_mysql -p3306:3306 --network mysql -v mysql-volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root --restart unless-stopped -d mysql:latest
 ```
 
-* here, --name is your container name and you can give as you want.
-* -p mapping container port
-* --network is to run our app under our custom define network which is in first step. You can also use --net and it's same.
-* -v or --volume is to connect our created volume which is in above step and give directory of the volumn which volume directory is inside docker as I mentioned in above docker will control that volume. Path is inside container and you can give as your want.
-* -e option is ENVIRONMENT variable which is to define, root password, user, password, database, etc. (if you create user with MYSQL_USER environment, you need to give permission)
-* --restart need to add policy, there are 4 policy, `no` (default, if no set), `on-failure`, `always`, `unless-stopped`.
+* here, `--name` is your container name and you can give as you want.
+* `-p` mapping container port
+* `--network` is to run our app under our custom define network which is in first step. You can also use `--net` and it's same.
+* `-v` or `--volume` is to connect our created volume which is in above step and give directory of the volumn which volume directory is inside docker as I mentioned in above docker will control that volume. Path is inside container and you can give as your want.
+* `-e` option is ENVIRONMENT variable which is to define, root password, user, password, database, etc. (if you create user with MYSQL_USER environment, you need to give permission). You can set with `.env` file for adding envirnoment values than adding on the fly (here, I don't use `.env` file).
+* `--restart` need to add policy, there are 4 policy, `no` (default, if no set), `on-failure`, `always`, `unless-stopped`.
 	* I used `unless-stopped` policy because I don't want auto restart my MySQL container on both manually stopped condition and docker deamon stopped conditions. You can use `always` policy if you want auto restart after docker application was started. for more details about restart policy, you can check in [Docker restart policy](https://docs.docker.com/config/containers/start-containers-automatically/).
-* -d is for detach mode (run in background and hiding logs), you can look logs for your container by typing `docker logs -f -n 100 {container_id}`
-* latest is for MySQL latest version and you can add other version as you want like mysql:5.7, etc. (current is 8.0.31)
+* `-d` is for detach mode (run in background and hiding logs), you can look logs for your container by typing `docker logs -f -n 100 {container_id}`
+* `latest` is for MySQL latest version and you can add other version as you want like mysql:5.7, etc. (current is 8.0.31)
 
 <a name="check-container"></a>
 #### 4. Check MySQL Container
