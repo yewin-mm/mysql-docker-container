@@ -80,11 +80,11 @@ This project is built with
 This project purpose to run MySQL db as container. <br>
 So, you need to install `Docker` in your machine. [Get Docker](https://www.docker.com/products/docker-desktop/) <br>
 So, please make sure all are installed in your machine.<br>
-- After installation was success, please note that docker will open when you turn on your computer as default and it will take space on RAM of your machine.<br>
-So, you need to set the setting that not to open always when you turn on your computer (login account) to reduce unnecessary taking space when you are not using related with docker.
-- Open docker desktop and you can see docker icon which are at noti bar. (Window user need to expand arrow which bottom right corner to see docker icon whereas Mac user can see at top noti bar).
-- Right click on docker icon and click Dashboard, after docker desktop was open, click setting icon (top right corner) and uncheck (untip) mark on “Start Docker Desktop when you login” in General tab. Click “Apply & Restart”.
-- With that setting, you can close, open whatever you want and it will not open always when you turn on your computer anymore.
+- After installation was success, please note that docker will open when you turn on your computer as default and it will take space on RAM of your machine. <br> 
+So, you need to set the setting that **not to open always** when you turn on your computer (login account) to reduce unnecessary taking space when you are not using related with docker.
+- Open `docker desktop` and you can see `docker icon` which are at noti bar. (Window user need to expand arrow which bottom right corner to see docker icon whereas Mac user can see at top noti bar).
+- `Right click` on docker icon and click `Dashboard`, after docker desktop was open, click `setting icon` (top right corner) and `uncheck` (untip) mark on `“Start Docker Desktop when you login”` in `General` tab. Click `“Apply & Restart”`.
+- With that setting, you can close, open whatever you want and it **will not open always** when you turn on your computer anymore.
 
 You can do step by step as I showed in [Instruction](#instruction) section.
 
