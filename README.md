@@ -357,7 +357,7 @@ docker inspect {mysql_container_id}
 		* eg. `spring.datasource.url=jdbc:mysql://172.20.0.2:3306/{your_database_name}`
 
 * I recommend to use container name instead of using ipaddress while connecting to containerized db from containerized application.
-* Please make sure adding `--net=mysql` (network name which we created in step 1) while running your application as container.
+* Please make sure adding `--net=mysql` (network name which we created in step 1) while running your application as container to connect this MySQL container.
 * If not so, you can't connect to Containerize MySQL db from your Containerized application as network is not same.
 * If you don't want to run your application as container, you can still use `localhost` or `127.0.0.1` which I mentioned in above.
 * You can't connect to MySQL from your localhost (application which running in IDE or command line) by using above your db container name or container ip address. So, use `localhost` or `127.0.0.1` when you run your application in your local.
