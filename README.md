@@ -58,7 +58,7 @@
 
 <a name="about-the-project"></a>
 ## ⚡️About The Project
-This is to run MySQL database as container. Containerization is the good approach to run any application in container. <br>
+This is to run MySQL database as container. Containerization is the good approach than running as manual. <br>
 You can start, stop this container as you want. <br>
 If you want to do things which related with database, you can start container. <br>
 If you don't want to do things with db, you can stop container. <br>
