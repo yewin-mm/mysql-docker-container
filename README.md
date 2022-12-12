@@ -406,8 +406,8 @@ So, you should stop when you are not use that db. This is one of the good approa
        ```sh
        docker network prune
        ```
-
-  * To remove all unused volume (need to take care your volumes is used by other unactive containers which will use in future <br> because it may lose your data if you stored some data from database in that volume)
+       
+  * To remove all unused volume (need to take care your volumes is used by other unactive containers which will use in future <br> because it may lose your data if you stored some data from database in that volume) <br> You can do below command and if you don't want to lose data, please run your necessary containers like DB containers if you stopped before (no need to re-run if your necessary DBs are already running) and type below command, that will delete only unused volume and don't delete volume that are connected with running containers. So that your data volume won't deleted. <br> And you should delete unused volumes as some unnecessay volumes take much disk space.
     * Type
        ```sh
        docker volume prune
