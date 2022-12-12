@@ -375,6 +375,52 @@ docker inspect {mysql_container_id}
 * Please note that if you run your db as container, your db will run the whole time in background. <br>
 So, you should stop when you are not use that db. This is one of the good approach of using containers that we can manage our containers as we want.
 * Database won't run when Docker was close. But if you open docker, it will automatically run as background unless you don't stop container manual with Docker stop keyword.
+* Check Docker disk space as some unnecessary images and unused containers may take much space
+  * Type 
+    ```sh
+    docker system df
+    ```
+  
+* Below are for cleaning all unused conatiners, images, networks and volumes
+  * If you've tested many containers and images and if you are lazy to remove (delete) tested many containers and images `one by one`, <br>
+  you can remove that by below commands are to reduce taking docker space on your disk.
+  * You should clean (remove) `unused containers and images` to reduce taking docker space. <br> 
+  But if you've planned to use that container in the future, you don't need to remove the container and just stopping is ok. <br>
+  You can even remove the container without removing its image if you've planned to use in the future.
+  * You can check disk space first by typing `docker system df`.
+  
+  * To remove all unused or stopped or unsuccessful containers (recommended way)
+    * Type 
+      ```sh
+      docker container prune
+      ```
+
+  * To remove all unused images (recommended way)
+    * Type
+       ```sh
+       docker image prune
+       ```
+
+  * To remove all unused networks <br> (need to take care your network because your container may just stop for a while and if that container used the network, that will also be removed as container is stopped that time if you do below command. <br> Please note that you can't start your container again after you clean the network which are mapping (bind) with container)
+    * Type
+       ```sh
+       docker network prune
+       ```
+
+  * To remove all unused volume (need to take care your volumes is used by other unactive containers which will use in future <br> because it may lose your data if you stored some data from database in that volume)
+    * Type
+       ```sh
+       docker volume prune
+       ```
+
+  * To remove all unused containers, images and networks (including cache)
+    * Type
+       ```sh
+       docker system prune
+       ```
+
+  * For more about cleaning multiple docker conatiners, images, etc, you can find in google.
+  
 * Example project to connect Containerized MySQL DB can be found here, [spring-boot-jpa-docker](https://github.com/yewin-mm/spring-boot-jpa-docker).
 
 ***Have Fun and Enjoy in Learning Code***
