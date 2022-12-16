@@ -200,6 +200,7 @@ docker ps
 docker exec -it {mysql_container_id} /bin/bash
 ```
 
+* You can also type `docker exec -it {container_id} /bin/sh` or `docker exec -it {container_id} bash`
 * here, you can leave container by typing `exit` command inside container.
 * you can also get inside container by container name like `docker exec -it {mysql_container_name} /bin/bash`
 * So, you can use container name for clear text instead of using long container id for doing the actions with related with container.
