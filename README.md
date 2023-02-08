@@ -382,7 +382,14 @@ So, you should stop when you are not use that db. This is one of the good approa
     docker system df
     ```
   
-* Below are for cleaning all unused conatiners, images, networks and volumes
+* Below are for cleaning all unused containers, images, networks, volumes and build cache
+  * If you've tested many containers and images, it will create build cache and that cache will take much space on your disk.
+  * To remove build cache
+    * Type 
+      ```sh
+      docker builder prune
+      ```
+      
   * If you've tested many containers and images and if you are lazy to remove (delete) tested many containers and images `one by one`, <br>
   you can remove that by below commands are to reduce taking docker space on your disk.
   * You should clean (remove) `unused containers and images` to reduce taking docker space. <br> 
