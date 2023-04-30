@@ -53,6 +53,7 @@
       - [6. Connect DB Container From Other Containers](#connect-from-other-container)
       - [7. Conclusion](#conclusion)
 - [Contact Me](#contact)
+- [Becoming a Sponsor](#becoming-a-sponsor)
 - [Contributing](#Contributing)
 
 
@@ -435,19 +436,28 @@ So, you should stop when you are not use that db. This is one of the good approa
 
 
 <a name="contact"></a>
-## ✉️ Contact
-Name - Ye Win <br> LinkedIn profile -  [Ye Win's LinkedIn](https://www.linkedin.com/in/ye-win-1a33a292/)  <br> Email Address - yewin.mmr@gmail.com
+## ✉️ Contact Me
+Name - Ye Win <br> LinkedIn profile -  [Ye Win](https://www.linkedin.com/in/ye-win-1a33a292/)  <br> Email Address - <a href="mailto:yewin.mmr@gmail.com?">yewin.mmr@gmail.com</a> <br> WhatsApp - [+959252656065](https://wa.me/959252656065?text=Hi) <br> Website - [My Website](https://yewin.me/)
+
 
 Project Link: [MySQL Docker Container](https://github.com/yewin-mm/mysql-docker-container)
 
 
+<a name="becoming-a-sponsor"></a>
+## 🥰 Becoming a Sponsor
+If you like any of my projects or if you want to support my work, please kindly consider becoming a sponsor. <br>
+It gives me great motivation and I can relentlessly maintain my projects and contribute to the open-source community.
+
+<a href="https://www.buymeacoffee.com/yewin" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="150" ></a>
+
 
 <a name="contributing"></a>
 ## ⭐ Contributing
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to be learnt, inspire, and create. Any contributions you make are **greatly appreciated**.
 <br>If you want to contribute....
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/yourname`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeatures'`)
 4. Push to the Branch (`git push -u origin feature/yourname`)
 5. Open a Pull Request
+
